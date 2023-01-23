@@ -147,5 +147,5 @@ aggregateElements = (array) => {
     console.log(stringConcat);
 }
 
-aggregateElements([1, 2, 3])
-aggregateElements([2, 4, 8, 16])
+//aggregateElements([1, 2, 3])
+//aggregateElements([2, 4, 8, 16])
