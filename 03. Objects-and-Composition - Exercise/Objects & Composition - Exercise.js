@@ -217,7 +217,7 @@ function rectangle(width, height, color) {
 function createSortedList() {
     let array = [];
 
-    let result = { 
+    let result = {
         add(element) {
             array.push(element);
             array.sort((a, b) => a - b);
@@ -240,10 +240,97 @@ function createSortedList() {
     return result;
 }
 
-let list = createSortedList();
-list.add(5);
-list.add(6);
-list.add(7);
-console.log(list.get(1));
-list.remove(1);
-console.log(list.get(1));
+// let list = createSortedList();
+// list.add(5);
+// list.add(6);
+// list.add(7);
+// console.log(list.get(1));
+// list.remove(1);
+// console.log(list.get(1));
+
+// Task 10
+function heroes() {
+    let result = {
+        mage,
+        fighter,
+    };
+
+    function fighter(nameAsInput) {
+        hero = {
+            name: nameAsInput,
+            health: 100,
+            stamina: 100,
+            fight() {
+                hero.stamina -= 1;
+                console.log(`${hero.name} slashes at the foe!`);
+            }
+        }
+        return hero;
+    }
+
+    function mage(nameAsInput) {
+        hero = {
+            name: nameAsInput,
+            health: 100,
+            mana: 100,
+            cast(spell) {
+                hero.mana -= 1;
+                console.log(`${hero.name} cast ${spell}`);
+            }
+        }
+        return hero;
+    }
+
+    return result;
+}
+
+// let create = heroes();
+// const scorcher = create.mage("Scorcher");
+// scorcher.cast("fireball")
+// scorcher.cast("thunder")
+// scorcher.cast("light")
+
+// const scorcher2 = create.fighter("Scorcher 2");
+// scorcher2.fight()
+
+// console.log(scorcher2.stamina);
+// console.log(scorcher.mana);
+
+
+// Task 11 
+function notation(array) {
+    let operands = [];
+
+    const operations = {
+        '-': (a, b) => a - b,
+        '+': (a, b) => a + b,
+        '*': (a, b) => a * b,
+        '/': (a, b) => a / b,
+    };
+
+    for (let i = 0; i < array.length; i++) {
+        let value = array[i];
+        if (!isNaN(value)) {
+            operands.push(value);
+        }else {
+            if (operands.length < 2) {
+                return console.log(`Error: not enough operands!`);
+            }
+            let secondNum = operands.pop();
+            let firstNum = operands.pop();
+            
+            operands.push(operations[value](firstNum, secondNum))
+        }
+    }
+
+    if (operands.length > 1) {
+        return console.log(`Error: too many operands!`);
+    }
+
+    return console.log(operands[0]);
+}
+
+notation([3, 4, '+']);
+notation([5, 3, 4, '*', '-']);
+notation([7, 33, 8, '-']);
+notation([15, '/']);
