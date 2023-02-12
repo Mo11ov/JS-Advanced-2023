@@ -2,7 +2,7 @@ function solve() {
   let textInput = document.getElementById("input").value;
   let output = document.getElementById("output");
 
-  let sentences = textInput.split(".")
+  let sentences = textInput.split(".").filter(x => x.length > 0);
   
   while (sentences.length > 0) {
     let text = sentences.splice(0, 3).join(". ") + ".";

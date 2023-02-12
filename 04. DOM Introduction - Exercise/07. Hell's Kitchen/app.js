@@ -3,8 +3,8 @@ function solve() {
 
    function onClick() {
       let textInput = JSON.parse(document.querySelector("div#inputs textarea").value);
-      let restaurantOutput = document.getElementById("bestRestaurant");
-      let workersOutput = document.getElementById("workers");
+      let restaurantOutput = document.querySelector("div#bestRestaurant p");
+      let workersOutput = document.querySelector("div#workers p");
 
       let result = [];
 
