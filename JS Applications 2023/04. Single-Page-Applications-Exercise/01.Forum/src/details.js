@@ -4,7 +4,7 @@ section.remove();
 export function showDetails(event) {
     let target = event.target;
 
-    if (target.tagName == 'H') {
+    if (target.tagName == 'H2') {
         target = target.parentElement;
     }
 
