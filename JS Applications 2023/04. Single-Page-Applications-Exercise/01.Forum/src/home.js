@@ -3,9 +3,12 @@ import { showDetails } from './details.js';
 
 const section = document.getElementById('homeView');
 section.querySelector('div.topic-title').addEventListener('click', showDetails);
+
 const form = section.querySelector('form');
 form.addEventListener('submit', onSubmit);
+
 section.querySelector('[name="cancel"]').addEventListener('click', clearForm);
+
 const container = section.querySelector('.topic-container');
 
 section.remove();
@@ -17,7 +20,7 @@ export async function showHome(ev) {
     const res = await fetch('http://localhost:3030/jsonstore/collections/myboard/posts');
     const posts = await res.json();
 
-    container.replaceChildren(...Object.values(posts).map(createPostPreview));
+    container.replaceChildren(...Object.values(posts).map(x => createPostPreview(x)));
 
     document.getElementById('main').replaceChildren(section);
 }
@@ -37,8 +40,6 @@ function createPostPreview(post) {
                     <p>Username: <span>${post.username}</span></p>
                 </div>
             </div>
-
-
         </div>
     </div>`;
 
@@ -49,7 +50,6 @@ async function onSubmit(ev) {
     ev.preventDefault();
     const formData = new FormData(form);
 
-    console.log(...formData.entries());
     const title = formData.get('topicName').trim();
     const username = formData.get('username').trim();
     const content = formData.get('postText').trim();
